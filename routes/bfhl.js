@@ -1,5 +1,5 @@
 import express from "express";
-import { fibonacci } from "../utils/math.js";
+import { fibonacci, getPrimes } from "../utils/math.js";
 
 const router = express.Router();
 
@@ -22,8 +22,8 @@ router.post("/", async (req, res) => {
       case "fibonacci":
         data = fibonacci(req.body[key]);
         break;
-      case "is_prime":
-        data = isPrime(req.body[key]);
+      case "prime":
+        data = getPrimes(req.body[key]);
         break;
       default:
         return res.status(400).json({

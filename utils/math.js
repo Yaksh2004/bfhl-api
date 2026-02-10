@@ -19,3 +19,18 @@ export const fibonacci = n => {
     return b;
   }
 };
+
+const isPrime = n => {
+  if (n <= 1) return false;
+  for (let i = 2; i * i <= n; i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+};
+
+export const getPrimes = arr => {
+  if (!Array.isArray(arr)) {
+    throw new Error("Input must be an array.");
+  }
+  return arr.filter(n => Number.isInteger(n) && isPrime(n));
+};
