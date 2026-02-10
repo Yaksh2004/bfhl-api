@@ -1,5 +1,5 @@
 import express from "express";
-import { fibonacci, getPrimes } from "../utils/math.js";
+import { fibonacci, getPrimes, lcmArray, hcfArray } from "../utils/math.js";
 
 const router = express.Router();
 
@@ -15,15 +15,22 @@ router.post("/", async (req, res) => {
     }
 
     const key = keys[0];
+    const value = req.body[key];
 
     let data;
 
     switch (key) {
       case "fibonacci":
-        data = fibonacci(req.body[key]);
+        data = fibonacci(value);
         break;
       case "prime":
-        data = getPrimes(req.body[key]);
+        data = getPrimes(value);
+        break;
+      case "lcm":
+        data = lcmArray(value);
+        break;
+      case "hcf":
+        data = hcfArray(value);
         break;
       default:
         return res.status(400).json({
