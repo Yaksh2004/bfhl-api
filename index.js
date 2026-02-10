@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import axios from "axios";
 
 import bfhlRoutes from "./routes/bfhl.js";
 import healthRoutes from "./routes/health.js";

@@ -1,5 +1,6 @@
 import express from "express";
 import { fibonacci, getPrimes, lcmArray, hcfArray } from "../utils/math.js";
+import { getAI } from "../utils/ai.js";
 
 const router = express.Router();
 
@@ -32,6 +33,12 @@ router.post("/", async (req, res) => {
       case "hcf":
         data = hcfArray(value);
         break;
+      case "ai":
+        console.log("Gemini key loaded:", !!process.env.GEMINI_API_KEY);
+
+        data = await getAI(value);
+        break;
+
       default:
         return res.status(400).json({
           is_success: false,
