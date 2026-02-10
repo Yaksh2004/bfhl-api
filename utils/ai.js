@@ -42,9 +42,9 @@ export const getAI = async prompt => {
 
     return aiResponse;
   } catch (error) {
-    if (error.response.status === 429) {
-      throw new Error("Rate limit exceeded. Please try again later.");
+    if (error.response?.status === 429) {
+      return "RateLimited";
     }
-    throw new Error("Failed to get AI response");
+    return "AIError";
   }
 };

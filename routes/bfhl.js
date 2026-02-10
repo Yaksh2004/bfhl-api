@@ -33,6 +33,7 @@ router.post("/", async (req, res) => {
       case "hcf":
         data = hcfArray(value);
         break;
+      case "AI":
       case "ai":
         console.log("Gemini key loaded:", !!process.env.GEMINI_API_KEY);
 
@@ -48,7 +49,7 @@ router.post("/", async (req, res) => {
 
     res.status(200).json({
       is_success: true,
-      offical_mail: process.env.OFFICIAL_EMAIL,
+      official_mail: process.env.OFFICIAL_EMAIL,
       data,
     });
   } catch (error) {
